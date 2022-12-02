@@ -1,0 +1,30 @@
+[
+    {
+      "nombre": "Impervius",
+      "despriccion": "Makes an object waterproof"
+    },
+    {
+      "nombre": "Incendio",
+      "despriccion": "Conjures flames"
+    },
+    {
+      "nombre": "Langlock",
+      "despriccion": "Causes the target's tongue to stick to the roof of their mouth"
+    },
+    {
+      "nombre": "Legilimens",
+      "despriccion": "Invading or navigating another's mind"
+    },
+    {
+      "nombre": "Levicorpus",
+      "despriccion": "Levitates the target by their ankle"
+    },
+    {
+      "nombre": "Locomotor Mortis",
+      "despriccion": "The Leg-Locker curse bounds the target's legs"
+    },
+    {
+      "nombre": "Lumos",
+      "despriccion": "Illuminates the caster's wand"
+    }
+  ]
