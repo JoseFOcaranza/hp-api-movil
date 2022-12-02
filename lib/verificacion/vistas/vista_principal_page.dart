@@ -14,7 +14,7 @@ class VistaPrincipalPage extends StatelessWidget {
         title: const Text('Menu Principal'),
         backgroundColor: const Color.fromARGB(255, 77, 182, 172),
       ),
-      backgroundColor: Color.fromARGB(80, 208, 206, 206),
+      backgroundColor: const Color.fromARGB(80, 208, 206, 206),
       body: Container(
           padding: const EdgeInsets.all(150),
           child: Row(
@@ -23,8 +23,8 @@ class VistaPrincipalPage extends StatelessWidget {
               Column(
                 children: [
                   SizedBox(
-                    width: 199,
-                    height: 143,
+                    width: 250,
+                    height: 180,
                     child: Card(
                         child: InkWell(
                       onTap: () {
@@ -36,20 +36,20 @@ class VistaPrincipalPage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: const <Widget>[
                           Icon(
-                            Icons.person_pin_rounded,
-                            size: 20.0,
+                            Icons.account_circle,
+                            size: 30.0,
                           ),
                           Text(
                             "Personajes",
-                            style: TextStyle(fontSize: 17.0),
+                            style: TextStyle(fontSize: 20),
                           )
                         ],
                       )),
                     )),
                   ),
                   SizedBox(
-                    width: 199,
-                    height: 143,
+                    width: 250,
+                    height: 180,
                     child: Card(
                         child: InkWell(
                       onTap: () {
@@ -62,11 +62,11 @@ class VistaPrincipalPage extends StatelessWidget {
                         children: const <Widget>[
                           Icon(
                             Icons.star,
-                            size: 20.0,
+                            size: 30.0,
                           ),
                           Text(
                             "Hechizos",
-                            style: TextStyle(fontSize: 17.0),
+                            style: TextStyle(fontSize: 20),
                           )
                         ],
                       )),
@@ -77,8 +77,8 @@ class VistaPrincipalPage extends StatelessWidget {
               Column(
                 children: [
                   SizedBox(
-                    width: 199,
-                    height: 143,
+                    width: 250,
+                    height: 180,
                     child: Card(
                         child: InkWell(
                       onTap: () {
@@ -91,12 +91,12 @@ class VistaPrincipalPage extends StatelessWidget {
                         children: const <Widget>[
                           Icon(
                             Icons.house,
-                            size: 20.0,
+                            size: 30.0,
                           ),
                           Text(
                             "Casas",
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 17.0),
+                            style: TextStyle(fontSize: 20),
                           )
                         ],
                       )),
@@ -107,8 +107,8 @@ class VistaPrincipalPage extends StatelessWidget {
               Column(
                 children: [
                   SizedBox(
-                    width: 199,
-                    height: 143,
+                    width: 250,
+                    height: 180,
                     child: Card(
                         child: InkWell(
                       onTap: () {
@@ -120,20 +120,20 @@ class VistaPrincipalPage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: const <Widget>[
                           Icon(
-                            Icons.account_circle,
-                            size: 20.0,
+                            Icons.school,
+                            size: 30.0,
                           ),
                           Text(
                             "Students",
-                            style: TextStyle(fontSize: 17.0),
+                            style: TextStyle(fontSize: 20),
                           )
                         ],
                       )),
                     )),
                   ),
                   SizedBox(
-                    width: 199,
-                    height: 143,
+                    width: 250,
+                    height: 180,
                     child: Card(
                         child: InkWell(
                       onTap: () {
@@ -145,12 +145,12 @@ class VistaPrincipalPage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: const <Widget>[
                           Icon(
-                            Icons.gavel_rounded,
-                            size: 20.0,
+                            Icons.gavel_sharp,
+                            size: 30.0,
                           ),
                           Text(
                             "Staff",
-                            style: TextStyle(fontSize: 17.0),
+                            style: TextStyle(fontSize: 20),
                           )
                         ],
                       )),

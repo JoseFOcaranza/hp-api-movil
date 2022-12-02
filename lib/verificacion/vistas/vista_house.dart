@@ -12,7 +12,7 @@ class VistaHouses extends StatelessWidget {
         title: const Text('Casas'),
         backgroundColor: const Color.fromARGB(255, 77, 182, 172),
       ),
-      backgroundColor: const Color.fromARGB(80, 150, 153, 225),
+      backgroundColor: const Color.fromARGB(80, 208, 206, 206),
       body: Container(
         padding: const EdgeInsets.all(150),
         child: Row(
@@ -21,8 +21,8 @@ class VistaHouses extends StatelessWidget {
             Column(
               children: [
                 SizedBox(
-                  width: 199,
-                  height: 143,
+                  width: 250,
+                  height: 180,
                   child: Card(
                       child: InkWell(
                     onTap: () {
@@ -34,20 +34,20 @@ class VistaHouses extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: const <Widget>[
                         Icon(
-                          Icons.api_rounded,
-                          size: 20.0,
+                          Icons.house,
+                          size: 30.0,
                         ),
                         Text(
                           "Gryffindor",
-                          style: TextStyle(fontSize: 17.0),
+                          style: TextStyle(fontSize: 22.0),
                         )
                       ],
                     )),
                   )),
                 ),
                 SizedBox(
-                  width: 199,
-                  height: 143,
+                  width: 250,
+                  height: 180,
                   child: Card(
                       child: InkWell(
                     onTap: () {
@@ -59,12 +59,12 @@ class VistaHouses extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: const <Widget>[
                         Icon(
-                          Icons.api_rounded,
-                          size: 20.0,
+                          Icons.house,
+                          size: 30.0,
                         ),
                         Text(
                           "Slytherin",
-                          style: TextStyle(fontSize: 17.0),
+                          style: TextStyle(fontSize: 22.0),
                         )
                       ],
                     )),
@@ -75,8 +75,8 @@ class VistaHouses extends StatelessWidget {
             Column(
               children: [
                 SizedBox(
-                  width: 199,
-                  height: 143,
+                  width: 250,
+                  height: 180,
                   child: Card(
                       child: InkWell(
                     onTap: () {
@@ -88,12 +88,12 @@ class VistaHouses extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: const <Widget>[
                         Icon(
-                          Icons.api_rounded,
-                          size: 20.0,
+                          Icons.house,
+                          size: 30.0,
                         ),
                         Text(
                           "Hufflepuff",
-                          style: TextStyle(fontSize: 17.0),
+                          style: TextStyle(fontSize: 22.0),
                         )
                       ],
                     )),
@@ -104,8 +104,8 @@ class VistaHouses extends StatelessWidget {
             Column(
               children: [
                 SizedBox(
-                  width: 199,
-                  height: 143,
+                  width: 250,
+                  height: 180,
                   child: Card(
                       child: InkWell(
                     onTap: () {
@@ -117,13 +117,13 @@ class VistaHouses extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: const <Widget>[
                         Icon(
-                          Icons.api_rounded,
-                          size: 20.0,
+                          Icons.house,
+                          size: 30.0,
                         ),
                         Text(
                           "Ravenclaw",
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 17.0),
+                          style: TextStyle(fontSize: 22.0),
                         )
                       ],
                     )),
