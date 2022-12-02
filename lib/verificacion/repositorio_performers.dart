@@ -32,10 +32,10 @@ class RepositorioPerformersOffline extends RepositorioPerformers {
   @override
   Future<Either<Problema, List<Performer>>> getPerformersByFilter(
       String address, filter) async {
-    String direccionCompleta = '$address/$filter.json';
+    String url = '$address/$filter.json';
     List<dynamic> file = [];
     try {
-      file = jsonDecode(File(direccionCompleta).readAsStringSync());
+      file = jsonDecode(File(url).readAsStringSync());
     } catch (e) {
       return Left(IncorrectAddress());
     }
@@ -50,10 +50,10 @@ class RepositorioPerformersOffline extends RepositorioPerformers {
 
 Either<Problema, List<Performer>> _getPerformersList(List<dynamic> lista) {
   try {
-    List<Performer> personajes = lista
+    List<Performer> performers = lista
         .map<Performer>((item) => Performer.constructor(json: item))
         .toList();
-    return Right(personajes);
+    return Right(performers);
   } catch (e) {
     return Left(IncorrectFormatPerformerJson());
   }
@@ -79,8 +79,8 @@ class RepositorioPerformersOnline extends RepositorioPerformers {
   @override
   Future<Either<Problema, List<Performer>>> getPerformersByFilter(
       String address, filter) async {
-    String rutaCompleta = '$address/$filter';
-    final response = await http.get(Uri.parse(rutaCompleta));
+    String url = '$address/$filter';
+    final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       var json = jsonDecode(response.body);
       final resultado = _getPerformersList(json);

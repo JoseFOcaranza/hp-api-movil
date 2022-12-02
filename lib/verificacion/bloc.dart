@@ -2,7 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'dart:io';
 
 import 'package:hp_api/dominio/performer.dart';
+import 'package:hp_api/dominio/spells.dart';
 import 'package:hp_api/verificacion/repositorio_performers.dart';
+import 'package:hp_api/verificacion/repositorio_spells.dart';
 
 class Estado {}
 
@@ -32,6 +34,24 @@ class MostrandoPrincipalPage extends Estado {}
 
 class MostrandoOfflineScreen extends Estado {}
 
+class MostrandoSpells extends Estado {
+  final List<Spells> spells;
+
+  MostrandoSpells(this.spells);
+}
+
+class MostrandoPerformersHogwartsStaff extends Estado {
+  final List<Performer> performers;
+
+  MostrandoPerformersHogwartsStaff(this.performers);
+}
+
+class MostrandoPerformersHogwartsStudents extends Estado {
+  final List<Performer> performers;
+
+  MostrandoPerformersHogwartsStudents(this.performers);
+}
+
 class Evento {}
 
 class Creado extends Evento {}
@@ -52,11 +72,7 @@ class MostrarPerformersByAHouse extends Evento {
   MostrarPerformersByAHouse(this.house);
 }
 
-class MostrarSpell extends Evento {
-  final String address;
-
-  MostrarSpell(this.address);
-}
+class MostrarSpells extends Evento {}
 
 class MostrarPerformerHouse extends Evento {
   final String address;
@@ -65,19 +81,9 @@ class MostrarPerformerHouse extends Evento {
   MostrarPerformerHouse(this.address, this.house);
 }
 
-class MostrarPerformerHogwartsStudents extends Evento {
-  final String address;
-  final String student;
+class MostrarPerformersHogwartsStaff extends Evento {}
 
-  MostrarPerformerHogwartsStudents(this.address, this.student);
-}
-
-class MostrarPersonajesStaff extends Evento {
-  final String address;
-  final String staff;
-
-  MostrarPersonajesStaff(this.address, this.staff);
-}
+class MostrarPerformersHogwartsStudents extends Evento {}
 
 class BlocVerificacion extends Bloc<Evento, Estado> {
   BlocVerificacion() : super(Creandose()) {
@@ -97,6 +103,10 @@ class BlocVerificacion extends Bloc<Evento, Estado> {
       });
     });
 
+    on<MostrarOnePerformer>((event, emit) async {
+      emit(MostrandoOnePerformer(event.performer));
+    });
+
     on<MostrarPerformersByHouse>((event, emit) async {
       emit(MostrandoPerformersByHouse());
     });
@@ -112,8 +122,39 @@ class BlocVerificacion extends Bloc<Evento, Estado> {
       });
     });
 
-    on<MostrarOnePerformer>((event, emit) async {
-      emit(MostrandoOnePerformer(event.performer));
+    on<MostrarSpells>((event, emit) async {
+      RepositorioSpellsOnline repositorioOnline = RepositorioSpellsOnline();
+      var resultado = await repositorioOnline
+          .getSpells('https://hp-api.onrender.com/api/spells');
+      resultado.match((l) {
+        emit(MostrandoOfflineScreen());
+      }, (r) {
+        emit(MostrandoSpells(r));
+      });
+    });
+
+    on<MostrarPerformersHogwartsStaff>((event, emit) async {
+      RepositorioPerformersOnline repositorioOnline =
+          RepositorioPerformersOnline();
+      var resultado = await repositorioOnline.getPerformersByFilter(
+          'https://hp-api.onrender.com/api/characters', 'staff');
+      resultado.match((l) {
+        emit(MostrandoOfflineScreen());
+      }, (r) {
+        emit(MostrandoPerformersHogwartsStaff(r));
+      });
+    });
+
+    on<MostrarPerformersHogwartsStudents>((event, emit) async {
+      RepositorioPerformersOnline repositorioOnline =
+          RepositorioPerformersOnline();
+      var resultado = await repositorioOnline.getPerformersByFilter(
+          'https://hp-api.onrender.com/api/characters', 'students');
+      resultado.match((l) {
+        emit(MostrandoOfflineScreen());
+      }, (r) {
+        emit(MostrandoPerformersHogwartsStudents(r));
+      });
     });
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:hp_api/verificacion/bloc.dart';
+import 'package:hp_api/verificacion/vistas/vista_performers.dart';
 
 class VistaPrincipalPage extends StatelessWidget {
   const VistaPrincipalPage({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class VistaPrincipalPage extends StatelessWidget {
         title: const Text('Menu Principal'),
         backgroundColor: const Color.fromARGB(255, 77, 182, 172),
       ),
-      backgroundColor: const Color.fromARGB(80, 150, 153, 225),
+      backgroundColor: Color.fromARGB(80, 208, 206, 206),
       body: Container(
           padding: const EdgeInsets.all(150),
           child: Row(
@@ -35,7 +36,7 @@ class VistaPrincipalPage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: const <Widget>[
                           Icon(
-                            Icons.api_rounded,
+                            Icons.person_pin_rounded,
                             size: 20.0,
                           ),
                           Text(
@@ -53,6 +54,35 @@ class VistaPrincipalPage extends StatelessWidget {
                         child: InkWell(
                       onTap: () {
                         var bloc = context.read<BlocVerificacion>();
+                        bloc.add(MostrarSpells());
+                      },
+                      child: Center(
+                          child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: const <Widget>[
+                          Icon(
+                            Icons.star,
+                            size: 20.0,
+                          ),
+                          Text(
+                            "Hechizos",
+                            style: TextStyle(fontSize: 17.0),
+                          )
+                        ],
+                      )),
+                    )),
+                  )
+                ],
+              ),
+              Column(
+                children: [
+                  SizedBox(
+                    width: 199,
+                    height: 143,
+                    child: Card(
+                        child: InkWell(
+                      onTap: () {
+                        var bloc = context.read<BlocVerificacion>();
                         bloc.add(MostrarPerformersByHouse());
                       },
                       child: Center(
@@ -60,18 +90,72 @@ class VistaPrincipalPage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: const <Widget>[
                           Icon(
-                            Icons.api_rounded,
+                            Icons.house,
                             size: 20.0,
                           ),
                           Text(
-                            "Houses",
+                            "Casas",
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 17.0),
                           )
                         ],
                       )),
                     )),
+                  )
+                ],
+              ),
+              Column(
+                children: [
+                  SizedBox(
+                    width: 199,
+                    height: 143,
+                    child: Card(
+                        child: InkWell(
+                      onTap: () {
+                        var bloc = context.read<BlocVerificacion>();
+                        bloc.add(MostrarPerformersHogwartsStudents());
+                      },
+                      child: Center(
+                          child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: const <Widget>[
+                          Icon(
+                            Icons.account_circle,
+                            size: 20.0,
+                          ),
+                          Text(
+                            "Students",
+                            style: TextStyle(fontSize: 17.0),
+                          )
+                        ],
+                      )),
+                    )),
                   ),
+                  SizedBox(
+                    width: 199,
+                    height: 143,
+                    child: Card(
+                        child: InkWell(
+                      onTap: () {
+                        var bloc = context.read<BlocVerificacion>();
+                        bloc.add(MostrarPerformersHogwartsStaff());
+                      },
+                      child: Center(
+                          child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: const <Widget>[
+                          Icon(
+                            Icons.gavel_rounded,
+                            size: 20.0,
+                          ),
+                          Text(
+                            "Staff",
+                            style: TextStyle(fontSize: 17.0),
+                          )
+                        ],
+                      )),
+                    )),
+                  )
                 ],
               ),
             ],

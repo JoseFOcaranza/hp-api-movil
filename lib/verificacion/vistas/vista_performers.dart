@@ -4,8 +4,8 @@ import 'package:hp_api/verificacion/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class VistaListaPersonajes extends StatelessWidget {
-  const VistaListaPersonajes({super.key, required this.performers});
+class VistaPerformers extends StatelessWidget {
+  const VistaPerformers({super.key, required this.performers});
   final List<Performer> performers;
 
   @override
@@ -21,13 +21,20 @@ class VistaListaPersonajes extends StatelessWidget {
                 child: ListView.builder(
                     itemCount: performers.length,
                     itemBuilder: (BuildContext context, int index) {
+                      String birthDate = performers[index].dateOfBirth;
+                      if (birthDate.isEmpty) {
+                        birthDate = "Unknown";
+                      }
                       return ListTile(
                         onTap: () {
                           var bloc = context.read<BlocVerificacion>();
                           bloc.add(MostrarOnePerformer(performers[index]));
                         },
-                        title: Text(performers[index].name),
-                        subtitle: Text(performers[index].house),
+                        title: Text(
+                          performers[index].name,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        subtitle: Text(birthDate),
                         leading: CachedNetworkImage(
                           imageUrl: performers[index].image,
                           placeholder: (context, url) =>
@@ -36,8 +43,6 @@ class VistaListaPersonajes extends StatelessWidget {
                               const Icon(Icons.error),
                         ),
                         trailing: Text(performers[index].species),
-
-                        //trailing: Text(performers[index].yearOfBirth),
                       );
                     })),
             FloatingActionButton.extended(

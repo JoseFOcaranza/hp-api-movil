@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hp_api/verificacion/vistas/vista_house.dart';
+import 'package:hp_api/verificacion/vistas/vista_spells.dart';
 import 'verificacion/vistas/vista_onePerformer.dart';
 import 'verificacion/bloc.dart';
 import 'verificacion/vistas/vista_cargando.dart';
@@ -50,7 +51,7 @@ class Aplicacion extends StatelessWidget {
               return const VistaPrincipalPage();
             }
             if (estado is MostrandoPerformers) {
-              return VistaListaPersonajes(performers: estado.performers);
+              return VistaPerformers(performers: estado.performers);
             }
             if (estado is MostrandoOnePerformer) {
               return VistaOnePerformer(performer: estado.performer);
@@ -60,6 +61,17 @@ class Aplicacion extends StatelessWidget {
             }
             if (estado is MostrandoPerformersByAHouse) {
               return VistaPerformerByHouse(performers: estado.performers);
+            }
+            if (estado is MostrandoSpells) {
+              return VistaSpells(
+                spells: estado.spells,
+              );
+            }
+            if (estado is MostrandoPerformersHogwartsStaff) {
+              return VistaPerformers(performers: estado.performers);
+            }
+            if (estado is MostrandoPerformersHogwartsStudents) {
+              return VistaPerformers(performers: estado.performers);
             }
             return const Center(child: Text('Algo esta pasando'));
           },

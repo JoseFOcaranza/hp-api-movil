@@ -38,21 +38,30 @@ class Performer {
     try {
       String image = json['image'];
       String house = json['house'];
-      if(house.isEmpty){
+      bool hogwartsStudent = json['hogwartsStudent'];
+      String dateOfBirth = json['dateOfBirth'];
+      if (dateOfBirth.isEmpty) {
+        dateOfBirth="Unknown";
+      }
+      if (house.isEmpty) {
         house = "Unknown";
+      }
+      if (image.isEmpty) {
+        image =
+            "https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png";
       }
       return Performer(
           name: json['name'],
           species: json['species'],
           gender: json['gender'],
           house: house,
-          dateOfBirth: json['dateOfBirth'],
+          dateOfBirth: dateOfBirth,
           yearOfBirth: json['yearOfBirth'].toString(),
           wizard: json['wizard'],
           eyeColour: json['eyeColour'],
           hairColour: json['hairColour'],
           patronus: json['patronus'],
-          hogwartsStudent: json['hogwartsStudent'],
+          hogwartsStudent: hogwartsStudent,
           hogwartsStaff: json['hogwartsStaff'],
           actor: json['actor'],
           alive: json['alive'],

@@ -14,7 +14,7 @@ class VistaPerformerByHouse extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Lista de todos los personajes'),
+          title: const Text('Personajes'),
           backgroundColor: const Color.fromARGB(255, 77, 182, 172),
         ),
         body: Column(
