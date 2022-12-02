@@ -11,7 +11,7 @@ class VistaPrincipalPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Menu Principal'),
-        backgroundColor: const Color.fromARGB(91, 10, 6, 220),
+        backgroundColor: const Color.fromARGB(255, 77, 182, 172),
       ),
       backgroundColor: const Color.fromARGB(80, 150, 153, 225),
       body: Container(
@@ -40,6 +40,32 @@ class VistaPrincipalPage extends StatelessWidget {
                           ),
                           Text(
                             "Personajes",
+                            style: TextStyle(fontSize: 17.0),
+                          )
+                        ],
+                      )),
+                    )),
+                  ),
+                  SizedBox(
+                    width: 199,
+                    height: 143,
+                    child: Card(
+                        child: InkWell(
+                      onTap: () {
+                        var bloc = context.read<BlocVerificacion>();
+                        bloc.add(MostrarPerformersByHouse());
+                      },
+                      child: Center(
+                          child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: const <Widget>[
+                          Icon(
+                            Icons.api_rounded,
+                            size: 20.0,
+                          ),
+                          Text(
+                            "Houses",
+                            textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 17.0),
                           )
                         ],

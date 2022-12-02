@@ -1,19 +1,21 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:hp_api/dominio/performer.dart';
 import 'package:hp_api/verificacion/bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class VistaListaPersonajes extends StatelessWidget {
-  const VistaListaPersonajes({super.key, required this.performers});
+class VistaPerformerByHouse extends StatelessWidget {
+  const VistaPerformerByHouse({Key? key, required this.performers})
+      : super(key: key);
+
   final List<Performer> performers;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Personajes'),
-          backgroundColor: Color.fromARGB(255, 77, 182, 172),
+          title: const Text('Lista de todos los personajes'),
+          backgroundColor: const Color.fromARGB(255, 77, 182, 172),
         ),
         body: Column(
           children: [
@@ -27,7 +29,6 @@ class VistaListaPersonajes extends StatelessWidget {
                           bloc.add(MostrarOnePerformer(performers[index]));
                         },
                         title: Text(performers[index].name),
-                        subtitle: Text(performers[index].house),
                         leading: CachedNetworkImage(
                           imageUrl: performers[index].image,
                           placeholder: (context, url) =>
@@ -35,17 +36,14 @@ class VistaListaPersonajes extends StatelessWidget {
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
                         ),
-                        trailing: Text(performers[index].species),
-
-                        //trailing: Text(performers[index].yearOfBirth),
                       );
                     })),
             FloatingActionButton.extended(
               onPressed: () {
                 var bloc = context.read<BlocVerificacion>();
-                bloc.add(Creado());
+                bloc.add(MostrarPerformersByHouse());
               },
-              icon: const Icon(Icons.home_outlined),
+              icon: const Icon(Icons.arrow_back),
               label: const Text('Regresar'),
               backgroundColor: Colors.teal[300],
             ),

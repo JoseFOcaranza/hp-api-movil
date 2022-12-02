@@ -8,6 +8,14 @@ class Estado {}
 
 class Creandose extends Estado {}
 
+class MostrandoPerformersByHouse extends Estado {}
+
+class MostrandoPerformersByAHouse extends Estado {
+  final List<Performer> performers;
+
+  MostrandoPerformersByAHouse(this.performers);
+}
+
 class MostrandoPerformers extends Estado {
   final List<Performer> performers;
 
@@ -22,7 +30,7 @@ class MostrandoOnePerformer extends Estado {
 
 class MostrandoPrincipalPage extends Estado {}
 
-class MostrandoPantallaSinInternet extends Estado {}
+class MostrandoOfflineScreen extends Estado {}
 
 class Evento {}
 
@@ -30,16 +38,18 @@ class Creado extends Evento {}
 
 class MostrarPerformers extends Evento {}
 
+class MostrarPerformersByHouse extends Evento {}
+
 class MostrarOnePerformer extends Evento {
   final Performer performer;
 
   MostrarOnePerformer(this.performer);
 }
 
-class MostrarPersonajesDeUnaCasa extends Evento {
-  final String casa;
+class MostrarPerformersByAHouse extends Evento {
+  final String house;
 
-  MostrarPersonajesDeUnaCasa(this.casa);
+  MostrarPerformersByAHouse(this.house);
 }
 
 class MostrarSpell extends Evento {
@@ -81,9 +91,24 @@ class BlocVerificacion extends Bloc<Evento, Estado> {
       var resultado = await repositorioOnline
           .getPerformers('https://hp-api.onrender.com/api/characters');
       resultado.match((l) {
-        emit(MostrandoPantallaSinInternet());
+        emit(MostrandoOfflineScreen());
       }, (r) {
         emit(MostrandoPerformers(r));
+      });
+    });
+
+    on<MostrarPerformersByHouse>((event, emit) async {
+      emit(MostrandoPerformersByHouse());
+    });
+
+    on<MostrarPerformersByAHouse>((event, emit) async {
+      RepositorioPerformersOnline repoOnline = RepositorioPerformersOnline();
+      var resultado = await repoOnline.getPerformersByFilter(
+          'https://hp-api.onrender.com/api/characters/house', event.house);
+      resultado.match((l) {
+        emit(MostrandoOfflineScreen());
+      }, (r) {
+        emit(MostrandoPerformersByAHouse(r));
       });
     });
 
