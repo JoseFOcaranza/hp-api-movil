@@ -36,11 +36,16 @@ class Performer {
 
   factory Performer.constructor({required Map<String, dynamic> json}) {
     try {
+      String image = json['image'];
+      String house = json['house'];
+      if(house.isEmpty){
+        house = "Unknown";
+      }
       return Performer(
           name: json['name'],
           species: json['species'],
           gender: json['gender'],
-          house: json['house'],
+          house: house,
           dateOfBirth: json['dateOfBirth'],
           yearOfBirth: json['yearOfBirth'].toString(),
           wizard: json['wizard'],
@@ -51,7 +56,7 @@ class Performer {
           hogwartsStaff: json['hogwartsStaff'],
           actor: json['actor'],
           alive: json['alive'],
-          image: json['image']);
+          image: image.toString().replaceAll('herokuapp', 'onrender'));
     } catch (e) {
       throw IncorrectFormatPerformerJson();
     }
