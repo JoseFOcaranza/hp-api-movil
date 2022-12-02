@@ -22,7 +22,7 @@
       "actor": "Daniel Radcliffe",
       "alternate_actors": [],
       "alive": true,
-      "image": "https://hp-api.herokuapp.com/images/harry.jpg"
+      "image": "https://hp-api.onrender.com/images/harry.jpg"
     },
     {
       "name": "Hermione Granger",
@@ -47,7 +47,7 @@
       "actor": "Emma Watson",
       "alternate_actors": [],
       "alive": true,
-      "image": "https://hp-api.herokuapp.com/images/hermione.jpeg"
+      "image": "https://hp-api.onrender.com/images/hermione.jpeg"
     },
     {
       "name": "Ron Weasley",
@@ -74,6 +74,6 @@
       "actor": "Rupert Grint",
       "alternate_actors": [],
       "alive": true,
-      "image": "https://hp-api.herokuapp.com/images/ron.jpg"
+      "image": "https://hp-api.onrender.com/images/ron.jpg"
     }
   ]
